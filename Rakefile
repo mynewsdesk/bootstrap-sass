@@ -36,7 +36,7 @@ end
 desc 'Compile bootstrap-sass to tmp/ (or first arg)'
 task :compile, :css_path do |t, args|
   require 'sass'
-  require 'bootstrap-sass/sass_functions'
+  require 'bootstrap-sass3/sass_functions'
   require 'term/ansicolor'
 
   path = 'vendor/assets/stylesheets'

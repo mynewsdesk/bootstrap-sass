@@ -1,5 +1,5 @@
 require 'sass'
-require 'bootstrap-sass'
+require 'bootstrap-sass3'
 
 module Sass::Script::Functions
   def twbs_font_path(source)

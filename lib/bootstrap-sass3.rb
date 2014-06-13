@@ -2,7 +2,7 @@ module Bootstrap
   class << self
     # Inspired by Kaminari
     def load!
-      require 'bootstrap-sass/sass_functions'
+      require 'bootstrap-sass3/sass_functions'
       register_compass_extension if compass?
 
       if rails?
@@ -65,7 +65,7 @@ module Bootstrap
     end
 
     def register_rails_engine
-      require 'bootstrap-sass/engine'
+      require 'bootstrap-sass3/engine'
       require 'autoprefixer-rails'
     end
   end
