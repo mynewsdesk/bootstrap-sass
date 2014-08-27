@@ -4,7 +4,7 @@ require 'bootstrap-sass3/version'
 
 Gem::Specification.new do |s|
   s.name     = "bootstrap-sass3"
-  s.version  = Bootstrap::VERSION
+  s.version  = Bootstrap3::VERSION
   s.authors  = ["Thomas McDonald"]
   s.email    = 'tom@conceptcoding.co.uk'
   s.summary  = "Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass"

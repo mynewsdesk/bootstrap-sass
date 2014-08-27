@@ -15,16 +15,16 @@ namespace :bower do
   task :spec do
     Dir.chdir Bootstrap.gem_path do
       spec       = JSON.parse(File.read 'bower.json')
-      js_paths   = File.read(File.join Bootstrap.javascripts_path, 'bootstrap.js').lines.map do |line|
+      js_paths   = File.read(File.join Bootstrap3.javascripts_path, 'bootstrap.js').lines.map do |line|
         line.strip if line.sub!(%r(//\s*=\s*require\s*(.*)\s*), 'vendor/assets/javascripts/\1.js')
       end.compact
 
       spec['main'] =
-          find_files.(File.join(Bootstrap.stylesheets_path, 'bootstrap.scss')) +
-          find_files.(Bootstrap.fonts_path) +
+          find_files.(File.join(Bootstrap3.stylesheets_path, 'bootstrap.scss')) +
+          find_files.(Bootstrap3.fonts_path) +
           js_paths
 
-      spec['version'] = Bootstrap::VERSION[0..-3]
+      spec['version'] = Bootstrap3::VERSION[0..-3]
 
       File.open('bower.json', 'w') do |f|
         f.puts JSON.pretty_generate(spec)
