@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'bootstrap-sass/version'
 
 Gem::Specification.new do |s|
-  s.name     = 'bootstrap-sass'
+  s.name     = 'bootstrap-sass3'
   s.version  = Bootstrap::VERSION
   s.authors  = ['Thomas McDonald']
   s.email    = 'tom@conceptcoding.co.uk'
