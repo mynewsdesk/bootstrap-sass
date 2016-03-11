@@ -11,7 +11,7 @@ module Bootstrap
       require 'bootstrap-sass/compass_functions'
       register_compass_extension
     elsif asset_pipeline?
-      require 'sass-rails' # See: https://github.com/thomas-mcdonald/bootstrap-sass/pull/4
+      require 'sassc-rails' # use sassc-rails gem
       register_rails_engine
       require 'bootstrap-sass/rails_functions'
     else
