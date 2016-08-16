@@ -13,7 +13,13 @@ Dummy::Application.configure do
   config.eager_load = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
+  if config.respond_to?(:serve_static_files)
+    # rails >= 4.2
+    config.serve_static_files = true
+  elsif config.respond_to?(:serve_static_assets)
+    # rails < 4.2
+    config.serve_static_assets = true
+  end
   config.static_cache_control = "public, max-age=3600"
 
   # Show full error reports and disable caching.
@@ -25,6 +31,8 @@ Dummy::Application.configure do
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
+
+  config.active_support.test_order = :random
 
   config.active_support.deprecation = :stderr
 end

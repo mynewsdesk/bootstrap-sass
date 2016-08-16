@@ -7,6 +7,10 @@ module Bootstrap3
 
       if rails?
         register_rails_engine
+      elsif lotus?
+        register_lotus
+      elsif sprockets?
+        register_sprockets
       end
 
       configure_sass
@@ -30,34 +34,41 @@ module Bootstrap3
     end
 
     def assets_path
-      @assets_path ||= File.join gem_path, 'vendor', 'assets'
+      @assets_path ||= File.join gem_path, 'assets'
     end
 
     # Environment detection helpers
-    def asset_pipeline?
+    def sprockets?
       defined?(::Sprockets)
     end
 
     def compass?
-      defined?(::Compass)
+      defined?(::Compass::Frameworks)
     end
 
     def rails?
       defined?(::Rails)
     end
 
+    def lotus?
+      defined?(::Lotus)
+    end
+
     private
 
     def configure_sass
+      require 'sass'
+
       ::Sass.load_paths << stylesheets_path
 
-      # bootstrap requires minimum precision of 10, see https://github.com/twbs/bootstrap-sass/issues/409
-      ::Sass::Script::Number.precision = [10, ::Sass::Script::Number.precision].max
+      # bootstrap requires minimum precision of 8, see https://github.com/twbs/bootstrap-sass/issues/409
+      ::Sass::Script::Number.precision = [8, ::Sass::Script::Number.precision].max
     end
 
     def register_compass_extension
       ::Compass::Frameworks.register(
           'bootstrap',
+          :version               => Bootstrap::VERSION,
           :path                  => gem_path,
           :stylesheets_directory => stylesheets_path,
           :templates_directory   => File.join(gem_path, 'templates')
@@ -67,6 +78,16 @@ module Bootstrap3
     def register_rails_engine
       require 'bootstrap-sass3/engine'
       require 'autoprefixer-rails'
+    end
+
+    def register_lotus
+      Lotus::Assets.sources << assets_path
+    end
+
+    def register_sprockets
+      Sprockets.append_path(stylesheets_path)
+      Sprockets.append_path(fonts_path)
+      Sprockets.append_path(javascripts_path)
     end
   end
 end
