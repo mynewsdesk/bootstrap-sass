@@ -2,9 +2,9 @@
   "name": "bootstrap-sass",
   "version": "3.3.7",
   "description": "bootstrap-sass is a Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.",
-  "main": "assets/javascripts/bootstrap.js",
-  "style": "assets/stylesheets/_bootstrap.scss",
-  "sass": "assets/stylesheets/_bootstrap.scss",
+  "main": "assets/javascripts/bootstrap3.js",
+  "style": "assets/stylesheets/_bootstrap3.scss",
+  "sass": "assets/stylesheets/_bootstrap3.scss",
   "files": [
     "assets",
     "eyeglass-exports.js",
