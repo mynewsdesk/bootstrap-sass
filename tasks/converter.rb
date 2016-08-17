@@ -42,15 +42,15 @@ class Converter
     @cache_path = cache_path
     @repo_url   = "https://github.com/#@repo"
     @save_to    = {
-        js:    'vendor/assets/javascripts/bootstrap',
-        scss:  'vendor/assets/stylesheets/bootstrap',
-        fonts: 'vendor/assets/fonts/bootstrap'}.merge(save_to)
+        js:    'assets/javascripts/bootstrap3',
+        scss:  'assets/stylesheets/bootstrap3',
+        fonts: 'assets/fonts/bootstrap3'}.merge(save_to)
   end
 
   def_delegators :@logger, :log, :log_status, :log_processing, :log_transform, :log_file_info, :log_processed, :log_http_get_file, :log_http_get_files, :silence_log
 
   def process_bootstrap
-    log_status "Convert Bootstrap LESS to SASS"
+    log_status "Convert Bootstrap LESS to Sass"
     puts " repo   : #@repo_url"
     puts " branch : #@branch_sha #@repo_url/tree/#@branch"
     puts " save to: #{@save_to.to_json}"
